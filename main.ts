@@ -1,3 +1,6 @@
+// A VM for make.fun's tiny stack ISA v1 (ISA.md in the kit): 32-bit wrapping arithmetic,
+// a 256-value data stack, a 64-deep call stack, 256 words of memory, ten traps and the
+// step and output limits. Every rule here follows the ISA in the order ISA.md states it.
 import { mkdirSync, readdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -21,7 +24,7 @@ function run(prog, input) {
   const pop = () => st[--sp] | 0;
 
   while (true) {
-    if (steps >= 1000000) { trap(10); break; }
+    if (steps >= 1e6) { trap(10); break; }
     if (pc < 0 || pc >= n) { trap(9); break; }
     const b = prog[pc];
     let im = 0, sz = 0, f = 0;
