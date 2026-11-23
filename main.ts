@@ -1,6 +1,5 @@
-// A VM for make.fun's tiny stack ISA v1 (ISA.md in the kit): 32-bit wrapping arithmetic,
-// a 256-value data stack, a 64-deep call stack, 256 words of memory, ten traps and the
-// step and output limits. Every rule here follows the ISA in the order ISA.md states it.
+// make.fun tiny stack ISA v1 (ISA.md): wrapping 32-bit arithmetic, 256-deep data stack, 64
+// call frames, 256 words, ten traps, step and output limits, in the order ISA.md states them.
 import { mkdirSync, readdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
